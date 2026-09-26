@@ -9,13 +9,11 @@
   --bg-primary: #FFFFFF;
   --bg-secondary: #F8FAFC;
   --bg-tertiary: #F1F5F9;
-  --bg-surface: #FFFFFF;
   --bg-card: rgba(255, 255, 255, 0.95);
   
   /* Bordes y Divisores */
   --border-subtle: #E2E8F0;
   --border-focus: #3B82F6;
-  --border-light: rgba(226, 232, 240, 0.8);
 
   /* Tipografía */
   --text-main: #0F172A;
@@ -32,14 +30,11 @@
   
   --emerald: #10B981;
   --emerald-light: #ECFDF5;
-  --purple: #8B5CF6;
-  --purple-light: #F5F3FF;
   --danger: #EF4444;
 
   /* Sombras y Elevación */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 12px 30px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
   --shadow-chat: 0 20px 45px -10px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(15, 23, 42, 0.06);
   --shadow-bubble: 0 10px 25px -5px rgba(37, 99, 235, 0.4), 0 6px 10px -4px rgba(37, 99, 235, 0.3);
 
@@ -83,8 +78,14 @@ body {
   background-color: #FAFAFC;
 }
 
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ==========================================================================
-   Fondo Ambiental de Diseño Blanco
+   Fondo Ambiental Blanco
    ========================================================================== */
 .ambient-background {
   position: fixed;
@@ -98,7 +99,7 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.4;
+  opacity: 0.45;
   animation: floatSlow 18s ease-in-out infinite alternate;
 }
 
@@ -136,7 +137,7 @@ body {
 }
 
 /* ==========================================================================
-   Cabecera de la Página
+   Cabecera
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -146,7 +147,6 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
-  transition: var(--transition-normal);
 }
 
 .nav-container {
@@ -162,8 +162,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  text-decoration: none;
   color: var(--text-main);
+  user-select: none;
 }
 
 .brand-logo {
@@ -176,11 +176,6 @@ body {
   justify-content: center;
   color: white;
   box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
-}
-
-.brand-logo svg {
-  width: 20px;
-  height: 20px;
 }
 
 .brand-title {
@@ -215,16 +210,10 @@ body {
   color: var(--text-muted);
   transition: var(--transition-fast);
   padding: 0.35rem 0;
-  position: relative;
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--primary);
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
 }
 
 .api-status-badge {
@@ -269,16 +258,16 @@ body {
   border-radius: 50%;
   background-color: #F59E0B;
   display: inline-block;
-  transition: var(--transition-fast);
 }
 
 /* ==========================================================================
-   Contenido Principal / Hero Minimalista
+   Contenido Hero
    ========================================================================== */
 .main-content {
   position: relative;
   z-index: 1;
   padding: 4rem 1.5rem 6rem;
+  flex: 1;
 }
 
 .content-container {
@@ -344,7 +333,6 @@ body {
   justify-content: center;
 }
 
-/* Botones */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -358,11 +346,6 @@ body {
   border: none;
   font-family: inherit;
   transition: all var(--transition-normal);
-}
-
-.btn-icon {
-  width: 18px;
-  height: 18px;
 }
 
 .btn-primary {
@@ -390,7 +373,7 @@ body {
 }
 
 /* ==========================================================================
-   Sección de Características
+   Características
    ========================================================================== */
 .features-section {
   display: grid;
@@ -442,25 +425,9 @@ body {
   margin-bottom: 1.25rem;
 }
 
-.feature-icon-wrapper svg {
-  width: 24px;
-  height: 24px;
-}
-
-.icon-blue {
-  background: #EFF6FF;
-  color: #2563EB;
-}
-
-.icon-purple {
-  background: #F5F3FF;
-  color: #8B5CF6;
-}
-
-.icon-emerald {
-  background: #ECFDF5;
-  color: #10B981;
-}
+.icon-blue { background: #EFF6FF; color: #2563EB; }
+.icon-purple { background: #F5F3FF; color: #8B5CF6; }
+.icon-emerald { background: #ECFDF5; color: #10B981; }
 
 .feature-card h3 {
   font-size: 1.2rem;
@@ -507,10 +474,10 @@ body {
   border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
   margin-bottom: 12px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   cursor: pointer;
   transform-origin: bottom right;
-  animation: tooltipEntrance 0.4s var(--transition-bounce);
+  animation: tooltipEntrance 0.35s var(--transition-bounce);
   max-width: 270px;
 }
 
@@ -539,7 +506,6 @@ body {
   padding: 2px 4px;
   border-radius: 4px;
   line-height: 1;
-  transition: var(--transition-fast);
 }
 
 .invitation-close-btn:hover {
@@ -588,11 +554,6 @@ body {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.bubble-icon svg {
-  width: 28px;
-  height: 28px;
-}
-
 .chat-bubble-btn .icon-chat {
   opacity: 1;
   transform: rotate(0deg) scale(1);
@@ -603,7 +564,6 @@ body {
   transform: rotate(-90deg) scale(0.5);
 }
 
-/* Estado cuando el chat está abierto */
 .chat-bubble-btn.is-active .icon-chat {
   opacity: 0;
   transform: rotate(90deg) scale(0.5);
@@ -612,10 +572,6 @@ body {
 .chat-bubble-btn.is-active .icon-close {
   opacity: 1;
   transform: rotate(0deg) scale(1);
-}
-
-.chat-bubble-btn.is-active .pulse-ring {
-  display: none;
 }
 
 /* Badge de Notificación */
@@ -635,7 +591,6 @@ body {
   justify-content: center;
   border: 2px solid #FFFFFF;
   box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 /* Anillo Pulsante */
@@ -672,23 +627,8 @@ body {
   flex-direction: column;
   overflow: hidden;
   transform-origin: bottom right;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.25s ease,
-              width 0.3s ease,
-              height 0.3s ease;
-  z-index: 1000;
-}
-
-.chat-window[hidden] {
-  display: none;
-  opacity: 0;
-  transform: scale(0.85) translateY(20px);
-  pointer-events: none;
-}
-
-.chat-window:not([hidden]) {
-  display: flex;
   animation: chatOpenAnimation 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 1000;
 }
 
 @keyframes chatOpenAnimation {
@@ -696,7 +636,6 @@ body {
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* Modo Expandido / Pantalla Grande */
 .chat-window.is-expanded {
   width: min(720px, calc(100vw - 48px));
   height: min(780px, calc(100vh - 100px));
@@ -721,8 +660,8 @@ body {
 
 .avatar-container {
   position: relative;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
 }
 
 .avatar-circle {
@@ -737,17 +676,12 @@ body {
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
 
-.avatar-circle svg {
-  width: 22px;
-  height: 22px;
-}
-
 .online-indicator {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--emerald);
   border: 2px solid #FFFFFF;
@@ -759,14 +693,14 @@ body {
 }
 
 .bot-name {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-main);
   line-height: 1.2;
 }
 
 .bot-status {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--emerald);
   font-weight: 500;
 }
@@ -794,11 +728,6 @@ body {
 .header-action-btn:hover {
   background: var(--bg-tertiary);
   color: var(--text-main);
-}
-
-.header-action-btn svg {
-  width: 17px;
-  height: 17px;
 }
 
 /* ==========================================================================
@@ -837,7 +766,6 @@ body {
   text-align: center;
   box-shadow: var(--shadow-sm);
   margin-bottom: 0.5rem;
-  animation: fadeIn 0.4s ease;
 }
 
 .welcome-icon {
@@ -876,6 +804,9 @@ body {
   text-align: left;
   cursor: pointer;
   font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   transition: all var(--transition-fast);
 }
 
@@ -904,7 +835,7 @@ body {
   flex-direction: row-reverse;
 }
 
-.message-row.bot {
+.message-row.assistant {
   align-self: flex-start;
 }
 
@@ -918,13 +849,7 @@ body {
   justify-content: center;
   color: #FFFFFF;
   flex-shrink: 0;
-  font-size: 0.75rem;
   margin-top: 4px;
-}
-
-.message-avatar svg {
-  width: 16px;
-  height: 16px;
 }
 
 .message-content-wrapper {
@@ -945,7 +870,6 @@ body {
   word-break: break-word;
 }
 
-/* Mensaje del Usuario */
 .message-row.user .message-bubble {
   background: var(--primary-gradient);
   color: #FFFFFF;
@@ -953,8 +877,7 @@ body {
   box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
 }
 
-/* Mensaje del Bot */
-.message-row.bot .message-bubble {
+.message-row.assistant .message-bubble {
   background: #FFFFFF;
   color: var(--text-main);
   border: 1px solid var(--border-subtle);
@@ -962,7 +885,7 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-/* Estilos de Markdown en el Bot */
+/* Markdown en Mensajes */
 .message-bubble p {
   margin-bottom: 0.5rem;
 }
@@ -978,10 +901,6 @@ body {
 
 .message-bubble li {
   margin-bottom: 0.25rem;
-}
-
-.message-bubble strong {
-  font-weight: 700;
 }
 
 .message-bubble code {
@@ -1000,7 +919,6 @@ body {
   border-radius: var(--radius-sm);
   overflow-x: auto;
   margin: 0.5rem 0;
-  position: relative;
 }
 
 .message-bubble pre code {
@@ -1008,24 +926,6 @@ body {
   color: inherit;
   padding: 0;
   font-size: 0.8rem;
-}
-
-.code-copy-btn {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  background: rgba(255, 255, 255, 0.15);
-  border: none;
-  color: #FFFFFF;
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.code-copy-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
 }
 
 .message-meta {
@@ -1044,7 +944,8 @@ body {
   cursor: pointer;
   padding: 2px;
   line-height: 1;
-  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
 }
 
 .btn-copy-msg:hover {
@@ -1056,8 +957,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 1.25rem 0.5rem;
-  background: #FAFAFC;
+  padding: 0.25rem 0;
 }
 
 .typing-bubble {
@@ -1177,11 +1077,6 @@ body {
   box-shadow: none;
 }
 
-.send-btn svg {
-  width: 16px;
-  height: 16px;
-}
-
 .stop-btn {
   background: #EF4444;
   color: #FFFFFF;
@@ -1191,11 +1086,6 @@ body {
   background: #DC2626;
 }
 
-.stop-btn svg {
-  width: 14px;
-  height: 14px;
-}
-
 .chat-caption {
   font-size: 0.68rem;
   color: var(--text-subtle);
@@ -1203,7 +1093,7 @@ body {
 }
 
 /* ==========================================================================
-   Adaptación Móvil y Responsiva
+   Adaptación Móvil
    ========================================================================== */
 @media (max-width: 640px) {
   .nav-links {

@@ -83,18 +83,23 @@ async def chat_stream_endpoint(payload: ChatRequest):
         },
     )
 
-# Frontend static serving setup
+# Frontend static serving setup (prioritizes React production build 'dist')
 frontend_dir = Path(__file__).resolve().parent.parent / "frontend"
+dist_dir = frontend_dir / "dist"
+dist_assets = dist_dir / "assets"
+
+if dist_assets.exists():
+    app.mount("/assets", StaticFiles(directory=str(dist_assets)), name="dist_assets")
 
 @app.get("/")
 async def serve_index():
+    dist_index = dist_dir / "index.html"
+    if dist_index.exists():
+        return FileResponse(dist_index)
     index_path = frontend_dir / "index.html"
     if index_path.exists():
         return FileResponse(index_path)
     return {"message": "index.html not found"}
-
-if frontend_dir.exists():
-    app.mount("/", StaticFiles(directory=str(frontend_dir), html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn
