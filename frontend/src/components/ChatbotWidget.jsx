@@ -18,6 +18,7 @@ import {
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import { playChime } from '../utils/audio';
+import { getApiUrl } from '../config';
 
 const SUGGESTIONS = [
   { icon: '💼', text: '¿Qué servicios ofrecen?' },
@@ -162,7 +163,7 @@ export default function ChatbotWidget({ isOpen, setIsOpen }) {
         content: m.content,
       }));
 
-      const response = await fetch('/api/chat/stream', {
+      const response = await fetch(getApiUrl('/api/chat/stream'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: payloadMessages }),

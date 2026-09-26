@@ -36,10 +36,11 @@ chatbot/
 
 ---
 
-## ⚙️ Configuración de Credenciales (`backend/.env`)
+## ⚙️ Configuración de Variables de Entorno (`.env`)
 
-Las credenciales ya han sido configuradas en `backend/.env`:
+El proyecto cuenta con archivos `.env` independientes para backend y frontend:
 
+### 1. Backend (`backend/.env`):
 ```env
 OPEN_WEBUI_URL=https://zuri.zvortex.cloud/api
 OPEN_WEBUI_KEY=sk-e0ebaaf070f7407b9293a2a5426ee613
@@ -48,11 +49,19 @@ BACKEND_PORT=8000
 BACKEND_HOST=0.0.0.0
 ```
 
+### 2. Frontend (`frontend/.env`):
+```env
+VITE_API_BASE_URL=http://localhost:8000
+VITE_PORT=5173
+```
+
+*(Ambos directorios cuentan con sus plantillas `.env.example` versionadas en el repositorio).*
+
 ---
 
 ## 🚀 Cómo Ejecutar el Proyecto
 
-### Opción 1: Inicio Todo-en-Uno (Recomendado)
+### Opción 1: Levantar Frontend y Backend juntos con un solo comando (Recomendado)
 
 En la terminal:
 
@@ -61,7 +70,11 @@ cd /home/felipe/Documents/clase/chatbot
 ./start.sh
 ```
 
-Abre tu navegador en [http://localhost:8000](http://localhost:8000).
+El script verificará dependencias, copiará los `.env` si no existen e iniciará ambos servicios concurrentemente:
+- 🌐 **Frontend React (Vite):** [http://localhost:5173](http://localhost:5173) (con HMR y proxy a la API)
+- ⚙️ **Backend FastAPI:** [http://localhost:8000](http://localhost:8000) (API y documentación Swagger en `/docs`)
+
+Al presionar `CTRL+C` en la terminal, ambos servidores se detienen limpiamente.
 
 ### Opción 2: Modo Desarrollo React (Con Hot-Reloading)
 

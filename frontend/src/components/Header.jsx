@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Cpu } from 'lucide-react';
+import { getApiUrl } from '../config';
 
 export default function Header() {
   const [status, setStatus] = useState({ state: 'checking', label: 'Conectando...' });
@@ -7,7 +8,7 @@ export default function Header() {
   useEffect(() => {
     const checkHealth = async () => {
       try {
-        const res = await fetch('/api/health');
+        const res = await fetch(getApiUrl('/api/health'));
         if (!res.ok) throw new Error('Offline');
         const data = await res.json();
         const isAiConnected = data.ai_connection && data.ai_connection.status === 'connected';
