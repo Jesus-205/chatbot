@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistente Inteligente | Chatbot</title>
+  <meta name="description" content="Chatbot inteligente con diseño moderno en blanco y burbuja interactiva conectado a Open WebUI.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Marked for markdown rendering & DOMPurify for security -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Fondo con sutil diseño minimalista blanco -->
+  <div class="ambient-background">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Barra de Navegación Minimalista -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <span class="brand-title">Zuri <span class="brand-badge">IA</span></span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#caracteristicas" class="nav-link">Capacidades</a>
+        <a href="#tecnologia" class="nav-link">Tecnología</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="api-status-badge" id="apiStatusBadge">
+          <span class="status-dot"></span>
+          <span class="status-label">Conectando...</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido Principal de Fondo con Diseño Blanco -->
+  <main class="main-content" id="inicio">
+    <div class="content-container">
+      
+      <!-- Seccion Hero -->
+      <section class="hero-section">
+        <div class="hero-badge">
+          <span class="badge-sparkle">✨</span>
+          <span>Open WebUI Asistente Conversacional</span>
+        </div>
+
+        <h1 class="hero-title">
+          Inteligencia artificial interactiva, <br>
+          <span class="gradient-text">simple y elegante.</span>
+        </h1>
+
+        <p class="hero-description">
+          Una plataforma conversacional conectada a tu servidor Open WebUI con respuestas en tiempo real por streaming. Diseñada con una interfaz ligera, accesible desde la burbuja flotante inferior.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="openChatHeroBtn">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Abrir Asistente Virtual
+          </button>
+          <a href="#caracteristicas" class="btn btn-secondary">
+            Ver Características
+          </a>
+        </div>
+      </section>
+
+      <!-- Tarjetas de Información / Características -->
+      <section class="features-section" id="caracteristicas">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3>Streaming en Tiempo Real</h3>
+          <p>Respuestas token por token mediante Server-Sent Events (SSE) para una fluidez natural instantánea.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3>Conexión Segura Open WebUI</h3>
+          <p>Tus credenciales y claves API se gestionan de forma segura a través del servidor backend en Python.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper icon-emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <h3>Arquitectura Modular</h3>
+          <p>Frontend desacoplado del backend FastAPI, listo para desplegar o incrustar como widget en cualquier web.</p>
+        </div>
+      </section>
+
+      <!-- Pie de Pagina de Fondo -->
+      <footer class="site-footer">
+        <p>© 2026 Zuri Chatbot · Backend Python FastAPI · Diseñado para máxima claridad</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- ============================================== -->
+  <!-- WIDGET FLOTANTE DE CHATBOT (LADO DERECHO INFERIOR) -->
+  <!-- ============================================== -->
+  <div class="chatbot-widget-container" id="chatbotWidget">
+    
+    <!-- Tooltip de Invitación Flotante -->
+    <div class="chat-invitation-tooltip" id="chatInvitation">
+      <div class="invitation-text">
+        <strong>¿Necesitas ayuda?</strong>
+        <span>Haz clic aquí para chatear con Zuri</span>
+      </div>
+      <button class="invitation-close-btn" id="closeInvitationBtn" aria-label="Cerrar sugerencia">✕</button>
+    </div>
+
+    <!-- Botón / Burbuja Flotante de Chatbot -->
+    <button class="chat-bubble-btn" id="chatBubbleBtn" aria-label="Abrir ventana de chat" aria-expanded="false">
+      <!-- Icono de Chat (visible cuando está cerrado) -->
+      <span class="bubble-icon icon-chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </span>
+      <!-- Icono de Cerrar (visible cuando está abierto) -->
+      <span class="bubble-icon icon-close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </span>
+      <!-- Badge de notificación -->
+      <span class="unread-badge" id="unreadBadge">1</span>
+      <!-- Anillo pulsante -->
+      <span class="pulse-ring"></span>
+    </button>
+
+    <!-- Ventana / Modal de Chatbot -->
+    <div class="chat-window" id="chatWindow" role="dialog" aria-modal="true" aria-labelledby="chatBotTitle" hidden>
+      
+      <!-- Cabecera del Chat -->
+      <header class="chat-header">
+        <div class="bot-profile">
+          <div class="avatar-container">
+            <div class="avatar-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path>
+                <rect x="4" y="8" width="16" height="12" rx="4"></rect>
+                <circle cx="9" cy="13" r="1.5" fill="currentColor"></circle>
+                <circle cx="15" cy="13" r="1.5" fill="currentColor"></circle>
+                <path d="M10 17h4"></path>
+              </svg>
+            </div>
+            <span class="online-indicator"></span>
+          </div>
+          <div class="bot-info">
+            <h2 class="bot-name" id="chatBotTitle">Zuri AI</h2>
+            <span class="bot-status" id="headerStatusText">En línea · Responde al instante</span>
+          </div>
+        </div>
+
+        <div class="chat-header-actions">
+          <!-- Toggle Silencio / Sonido -->
+          <button class="header-action-btn" id="soundToggleBtn" title="Alternar sonido" aria-label="Alternar sonido">
+            <svg class="icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+          </button>
+          
+          <!-- Expandir / Compactar tamaño -->
+          <button class="header-action-btn" id="expandToggleBtn" title="Maximizar / Reducir tamaño" aria-label="Cambiar tamaño">
+            <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <polyline points="9 21 3 21 3 15"></polyline>
+              <line x1="21" y1="3" x2="14" y2="10"></line>
+              <line x1="3" y1="21" x2="10" y2="14"></line>
+            </svg>
+            <svg class="icon-shrink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <polyline points="4 14 10 14 10 20"></polyline>
+              <polyline points="20 10 14 10 14 4"></polyline>
+              <line x1="14" y1="10" x2="21" y2="3"></line>
+              <line x1="10" y1="14" x2="3" y2="21"></line>
+            </svg>
+          </button>
+
+          <!-- Limpiar conversación -->
+          <button class="header-action-btn" id="clearChatBtn" title="Limpiar conversación" aria-label="Limpiar conversación">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+
+          <!-- Cerrar Chat -->
+          <button class="header-action-btn" id="closeChatBtn" title="Minimizar chat" aria-label="Minimizar chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Cuerpo de Mensajes -->
+      <div class="chat-messages-container" id="chatMessages" tabindex="0">
+        <!-- Saludo Inicial y Sugerencias -->
+        <div class="welcome-box" id="welcomeBox">
+          <div class="welcome-icon">👋</div>
+          <h3>¡Bienvenido a Zuri!</h3>
+          <p>Soy tu asistente virtual con inteligencia artificial. ¿En qué te puedo ayudar hoy?</p>
+          
+          <div class="suggestions-grid">
+            <button class="suggestion-chip" data-prompt="¿Qué servicios ofrecen?">
+              💼 ¿Qué servicios ofrecen?
+            </button>
+            <button class="suggestion-chip" data-prompt="¿Cuáles son los horarios de atención?">
+              ⏰ Horarios de atención
+            </button>
+            <button class="suggestion-chip" data-prompt="¿Cómo puedo ponerme en contacto con un asesor?">
+              📞 Contactar asesor
+            </button>
+            <button class="suggestion-chip" data-prompt="Cuéntame sobre ti y tus capacidades.">
+              🤖 ¿Cuáles son tus capacidades?
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicador de "Escribiendo..." -->
+      <div class="typing-indicator" id="typingIndicator" style="display:none;">
+        <div class="typing-bubble">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <span class="typing-label">Zuri está respondiendo...</span>
+      </div>
+
+      <!-- Pie / Área de Entrada de Texto -->
+      <footer class="chat-footer">
+        <form class="chat-input-form" id="chatInputForm">
+          <textarea
+            id="chatInput"
+            class="chat-input"
+            rows="1"
+            placeholder="Escribe tu mensaje aquí..."
+            maxlength="2000"
+            aria-label="Escribe tu mensaje"></textarea>
+
+          <div class="input-actions">
+            <!-- Botón Detener Generación (durante streaming) -->
+            <button type="button" class="stop-btn" id="stopGenerationBtn" title="Detener respuesta" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+              </svg>
+            </button>
+
+            <!-- Botón Enviar Mensaje -->
+            <button type="submit" class="send-btn" id="sendBtn" title="Enviar mensaje" aria-label="Enviar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </form>
+        <div class="chat-caption">
+          <span>Impulsado por <strong>Open WebUI</strong> · Python Backend</span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
