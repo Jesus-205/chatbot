@@ -11,3 +11,6 @@ OPEN_WEBUI_KEY = os.getenv("OPEN_WEBUI_KEY", "sk-e0ebaaf070f7407b9293a2a5426ee61
 MODEL_NAME = os.getenv("MODEL_NAME", "zuri:latest")
 BACKEND_HOST = os.getenv("BACKEND_HOST", "0.0.0.0")
 BACKEND_PORT = int(os.getenv("BACKEND_PORT", "8000"))
+
+USE_N8N = os.getenv("USE_N8N", "true").lower() in ("true", "1", "yes")
+N8N_WEBHOOK_URL = os.getenv("N8N_WEBHOOK_URL", "http://localhost:5678/webhook/chat")
